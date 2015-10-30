@@ -2,12 +2,14 @@
 
 let path = require('path');
 let express = require('express');
+let logger = require('morgan');
 let bodyParser = require('body-parser');
 let passport = require('passport');
 let session = require('express-session');
 
 let app = express();
 
+app.use(logger('dev'));
 app.use(session({secret: 'secret123'}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));

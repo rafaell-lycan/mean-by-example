@@ -1,6 +1,6 @@
 let config = {
-  mode: 'local',
-  port: '3000'
+  mode: process.env.NODE_ENV || 'development',
+  port: process.env.PORT || '3000'
 };
 
 module.exports = config;
