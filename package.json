@@ -1,0 +1,25 @@
+{
+  "name": "mean-by-example",
+  "version": "1.0.0",
+  "description": "Mean Stack by example is a simple tutorial to teach you how create apps using only JavaScript based technologies.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafaell-lycan/mean-by-example.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rafaell-lycan/mean-by-example/issues"
+  },
+  "homepage": "https://github.com/rafaell-lycan/mean-by-example#readme",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "mongodb": "^2.0.47",
+    "mongoose": "^4.2.3"
+  }
+}
