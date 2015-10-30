@@ -24,7 +24,7 @@ app.get('/', function (req, res) {
 });
 
 //API Routes
-app.use('/api', require('./routes/routes'));
+app.use('/api', require('./routes/api'));
 
 //Catch 404 routes
 app.use(function (req, res, next) {
