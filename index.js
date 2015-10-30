@@ -8,10 +8,6 @@ let session = require('express-session');
 
 let app = express();
 
-//View engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
 app.use(session({secret: 'secret123'}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -19,18 +15,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/', function (req, res) {
-  res.render('index');
-});
-
 //API Routes
 app.use('/api', require('./routes/api'));
 
-//Catch 404 routes
-app.use(function (req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+app.get('/*', function (req, res) {
+  res.sendfile(path.join(__dirname, 'views/index.html'));
+});
+
+app.use(function(err, req, res, next){
+    res.send(err.status, {error_code: err.status, message: err.message || 'Something went wrong :-('});
 });
 
 app.listen(3000);

@@ -2,21 +2,29 @@
 
 let express = require('express');
 let router = express.Router();
+let TodoController = require('../controllers/TodoController');
 
 router.all('/', (req, res) =>  res.json({'message' : 'Mean API'}) );
 
 router.route('/todos')
       // Returns all TODOs
-      .get( (req, res) => res.json({message: 'All todos'}))
+      .get(TodoController.index)
       // Create a new TODO
-      .post( (req, res) => res.json({message: 'New Todo Created'}));
+      .post(TodoController.create);
 
 router.route('/todos/:id')
       // Returns a particular TODO
-      .get( (req, res) => res.json({message: 'Get TODO id: ' + req.params.id }))
+      .get(TodoController.show)
       // Update existing TODO
-      .put( (req, res) => res.json({message: 'Update TODO id: ' + req.params.id}))
+      .put(TodoController.update)
       // Delete existing TODO
-      .delete( (req, res) => res.json({message: 'Delete TODO id: ' + req.params.id}));
+      .delete(TodoController.destroy);
+
+//Catch 404 routes
+router.use(function (req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
 
 module.exports = router;
